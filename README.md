@@ -4,7 +4,8 @@ This repository contains a Dockerized Incident Management System built for the Z
 
 ## Demo Video
 
-[Uploading Screencast from 08-12-25 05:46:45 PM IST.webm…]()
+[Screencast from 08-12-25 05:46:45 PM IST.webm](https://github.com/user-attachments/assets/7eea2b07-f708-4db6-8af0-f25d96e9778e)
+
 
 
 ## One-Command Setup
