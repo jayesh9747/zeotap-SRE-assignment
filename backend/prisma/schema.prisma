@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum IncidentStatus {
+  OPEN
+  INVESTIGATING
+  RESOLVED
+  CLOSED
+}
+
+enum Severity {
+  P0
+  P1
+  P2
+  P3
+}
+
+model Incident {
+  id              String         @id @default(cuid())
+  componentId     String
+  componentType   String
+  severity        Severity
+  status          IncidentStatus @default(OPEN)
+  title           String
+  firstSignalAt   DateTime
+  lastSignalAt    DateTime
+  signalCount     Int            @default(0)
+  responderGroup  String
+  debounceKey     String         @unique
+  mttrSeconds     Int?
+  rca             Rca?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@index([status, severity])
+  @@index([componentId, createdAt])
+}
+
+model Rca {
+  id                 String   @id @default(cuid())
+  incidentId         String   @unique
+  startTime          DateTime
+  endTime            DateTime
+  rootCauseCategory  String
+  fixApplied         String
+  preventionSteps    String
+  createdAt          DateTime @default(now())
+  incident           Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+}
+
+model AggregationBucket {
+  id          String   @id @default(cuid())
+  componentId String
+  severity    Severity
+  bucketStart DateTime
+  bucketSize  String
+  signalCount Int      @default(0)
+
+  @@unique([componentId, severity, bucketStart, bucketSize])
+  @@index([bucketStart])
+}

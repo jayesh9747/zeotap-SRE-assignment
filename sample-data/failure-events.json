@@ -1,0 +1,41 @@
+{
+  "signals": [
+    {
+      "componentId": "RDBMS_PRIMARY_01",
+      "componentType": "RDBMS",
+      "level": "ERROR",
+      "message": "primary database unavailable",
+      "payload": {
+        "errorCode": "CONNECTION_REFUSED",
+        "latencyMs": 3000
+      }
+    },
+    {
+      "componentId": "MCP_HOST_17",
+      "componentType": "MCP_HOST",
+      "level": "ERROR",
+      "message": "mcp host cannot reach tool runtime",
+      "payload": {
+        "errorCode": "TOOL_RUNTIME_UNAVAILABLE"
+      }
+    },
+    {
+      "componentId": "CACHE_CLUSTER_01",
+      "componentType": "CACHE",
+      "level": "WARN",
+      "message": "cache read latency spike",
+      "payload": {
+        "latencyMs": 950
+      }
+    },
+    {
+      "componentId": "ASYNC_QUEUE_02",
+      "componentType": "QUEUE",
+      "level": "ERROR",
+      "message": "queue consumer timeout",
+      "payload": {
+        "errorCode": "CONSUMER_TIMEOUT"
+      }
+    }
+  ]
+}
