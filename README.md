@@ -2,6 +2,11 @@
 
 This repository contains a Dockerized Incident Management System built for the Zeotap Infrastructure / SRE Intern assignment. The app ingests high-volume operational signals, groups noisy failures into incidents, stores raw evidence, supports RCA-driven closure, and exposes a responsive dashboard plus Swagger API documentation.
 
+## Demo Video
+
+[Uploading Screencast from 08-12-25 05:46:45 PM IST.webm…]()
+
+
 ## One-Command Setup
 
 From a fresh clone:
